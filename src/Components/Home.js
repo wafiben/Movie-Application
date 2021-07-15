@@ -17,7 +17,7 @@ function Home({movies,match}){
         {movies.length > 0 ? (
           <div className="movie-list">
             {movies.map((movie) => (
-              <Link to={{pathname:`/${movie.id}`,state:movie}}>
+              <Link to={`/${movie.id}`}  style={{ textDecoration: 'none' ,color:'black'}}>
               <SingleMovie
                 key={movie.id}
                 poster={movie.poster}

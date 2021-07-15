@@ -1,19 +1,29 @@
-import React, { useState, useEffect } from "react";
-
-function Details ({match,movies,location})  {
-    const [movie,setMovie]=useState({});
+ import React, { useState, useEffect } from "react";
+ import './Details.css';
+ import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.css";
+function Details ({movies,match}){
+    const [Movie, setMovie]= useState({});
+    useEffect(()=>{
+        setMovie(movies.find((film)=>film.id.toString()==match.params.id))
+console.log(match);
+console.log(Movie)
+    },[])
+    return (
+      <div class="card-specific" >
+  <div class="card-header">
+      <h3> {Movie.title}</h3>
+   
+  </div>
+  <div class="card-body">
+    <blockquote class="blockquote mb-0">
+      <p >{Movie.descreption}</p>
+      <Link to="/" href="#" class="btn btn-primary">Go Home Page</Link>
+    </blockquote>
+  </div>
+</div>
+    )
     
-     useEffect(()=>{
-        setMovie(movies.filter(
-        
-            (film)=>film.id.toString()==match.params.id));
-     },[])
-    return <div>
-    <h1>deatils page</h1>
-    {/*  <h1>{movie[0].title}</h1>
-     <h1>{movie[0].descreption}</h1> */}
-     <h1>{location.state.title}</h1>
-    </div>
-}  
-export default Details;
+}
+export default Details; 
 

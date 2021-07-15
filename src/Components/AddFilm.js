@@ -1,4 +1,5 @@
 import "bootstrap/dist/css/bootstrap.css";
+import './AddFilm.css'
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";

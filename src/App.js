@@ -52,9 +52,23 @@ function App() {
   //component={SingleMovie}
   //setMovies([...movies,new Set(movies)])
    const onAdd=(newMovie)=>setMovies([...movies,newMovie])
+   const onSearch =(caracter)=>{
+    if (isNaN(caracter) === true) {
+      setMovies(
+        movies.filter((movie) =>
+          movie.title.toLowerCase().includes(caracter.toLowerCase())
+        )
+      );
+    }
+    else {
+      
+        setMovies(movies.filter((movie) => movie.rate == caracter));
+      
+    }
+   }
   return (
     <Router>
-      <Navbar></Navbar>
+      <Navbar onSearch={onSearch}></Navbar>
       <Switch>
      <Route path="/"  exact render={(props)=><Home  {...props} movies={movies}></Home>}     ></Route>
      <Route path="/AddFilm"  exact render={(props)=><AddFilm  {...props} onAdd={onAdd}/>}></Route>
